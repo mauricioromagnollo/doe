@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doe Sangue! Doe Vida!</title>
+  <link rel="stylesheet" href="./static/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <img
+      class="logo" 
+      src="./assets/logo.png" 
+      alt="Imagem da Logo DOE"
+    >
+    <h2>A sua doação importa</h2>
+    <p>Salve até 3 vidas com 1 doação</p>
+    <p>Mais de 38.000 doações são necessárias todos os dias</p>
+    <p>Apenas 1,9% da população brasileira, doa sangue.</p>
+
+    <button>Quero Ajudar</button>
+  </header>
+  <section class="form hide">
+    <h2>Entre na Lista de Doadores</h2>
+    <form action="/">
+      <input 
+        type="text" 
+        name="name"
+        placeholder="Nome Completo"
+      >
+      <input 
+        type="text" 
+        name="email"
+        placeholder="Email"
+      >
+      <input 
+        type="text" 
+        name="blood"
+        placeholder="Tipo Sanguíneo"
+      >
+      <button>Quero Ajudar</button>
+    </form>
+  </section>
+  <main>
+    <h2>Últimos <span>Doadores</span></h2>
+    
+    <section class="donors">
+      <div class="donor">
+        <div class="blood">AB+</div>
+        <p>Diego Fernandes</p>
+      </div>
+      <div class="donor">
+        <div class="blood">B+</div>
+        <p>Cleiton Souza</p>
+      </div>
+      <div class="donor">
+        <div class="blood">A+</div>
+        <p>Robson Marques</p>
+      </div>
+      <div class="donor">
+        <div class="blood">O+</div>
+        <p>Mayk Brito</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    Com &#9825 Rocketseat
+  </footer>
+
+  <script src="./static/script.js"></script>
+</body>
+
+</html>
