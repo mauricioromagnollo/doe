@@ -5,15 +5,23 @@
   "keywords": [],
   "author": "x0n4d0 [mauricioromagnolis@gmail.com]",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "scripts": {
     "start": "nodemon server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "husky": "^4.2.3",
     "nunjucks": "^3.2.0",
     "pg": "^7.18.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "nodemon": "^2.0.2"
   }
 }
