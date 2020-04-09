@@ -23,6 +23,6 @@ Projeto Open Source em HTML, CSS e JavaScript puro no frontend e Node com Expres
 
   \* Veja o arquivo [package.json](./src/package.json).
 
-## **Licensa**
+## **Licença**
 
 Este projeto está licenciado pela MIT. Para mais informações, leia o arquivo [LICENSE](./LICENSE) onde está descrito a licença.
