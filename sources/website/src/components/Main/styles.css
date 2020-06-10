@@ -1,0 +1,22 @@
+main h2 {
+  margin-bottom: 70px;
+}
+
+main h2 span {
+  color: var(--logo-color);
+}
+
+main {
+  text-align: center;
+}
+
+main {
+  margin: 0 auto 70px;
+  width: 90%;
+  max-width: 500px;
+}
+
+main .donors {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

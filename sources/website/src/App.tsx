@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
 
+import Header from './components/Header';
+import Form from './components/Form';
+import Main from './components/Main';
+import Footer from './components/Footer';
+
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Hello Doe!</h1>
-    </div>
+    <>
+      <Header />
+      <Form />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
