@@ -37,4 +37,5 @@ h2:hover {
 
 button {
   cursor: pointer;
+  outline: none;
 }
