@@ -7,6 +7,8 @@ Projeto Open Source em HTML, CSS e JavaScript puro no frontend e Node com Expres
 
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/38081852/74862827-9105d880-532b-11ea-9d03-2c958659446a.gif)
 
+> Veja o <kbd>[Histórico de Versões](./docs/notes/version-history.md)</kbd> desse projeto.
+
 ## **Tecnologias**
   - **Frontend**
     - HTML, CSS e JS (Puro)
