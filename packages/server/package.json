@@ -1,5 +1,5 @@
 {
-  "name": "doe",
+  "name": "@doe/server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "author": "x0n4d0 [mauricioromagnolis@gmail.com]",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --require dotenv/config --transpileOnly --ignore-watch node_modules src/server.ts"
+    "start": "ts-node-dev --require dotenv/config --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
