@@ -1,0 +1,13 @@
+{
+  "name": "doe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:x0n4d0/doe.git",
+  "author": "x0n4d0 <romagnolimauricio@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-angular": "^9.1.1",
+    "husky": "^4.2.5"
+  }
+}
