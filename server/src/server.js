@@ -1,11 +1,16 @@
 const express = require('express');
-const { Pool } = require('pg');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const crypto = require('crypto');
+const { join } = require('path');
+const { Pool } = require('pg');
 
 const server = express();
+
+const currentDir = __dirname
+
 dotenv.config({
-  path: __dirname + '/../.env.dev'
+  path: join(currentDir, '../', '.env.dev')
 });
 
 server.use(cors());
@@ -13,10 +18,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 const db = new Pool({
-  user: process.env.POSTGRES_USER,
+  user: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
   host: process.env.POSTGRES_HOST,
-  port: process.env.POSTGRES_PORT,
+  port: Number(process.env.POSTGRES_PORT),
   database: process.env.POSTGRES_DATABASE
 });
 
@@ -27,14 +32,33 @@ function Donor({ name, email, blood }) {
 };
 
 server.get('/donors', (request, response) => {
-  db.query('SELECT * FROM donors', (err, result) => {
+  let donors = []
+
+  // db.query('SELECT * FROM DONOR', (err, result) => {
+  //   if (err) { 
+  //     return response.send('Erro no Banco de Dados');
+  //   }
+
+  //   donors = result.rows ? result.rows : [];
+  // })
+
+  db.connect((err, client, release) => {
     if (err) { 
       return response.send('Erro no Banco de Dados');
     }
 
-    const donors = result.rows;
-    return response.render('./index.html', { donors });
+    client.query('SELECT * FROM DONOR', (err, result) => {
+      release();
+      if (err) { 
+        return response.send('Erro no Banco de Dados');
+      }
+
+      donors = result.rows ? result.rows : [];
+    })
+
   })
+
+  return response.status(200).json(donors);
 });
 
 server.post('/donors', (request, response) => {
@@ -46,19 +70,21 @@ server.post('/donors', (request, response) => {
     return response.send('Todos os Campos São Obrigatórios');  
   }
 
-  const donor = new Donor({ name, email, blood });
+  const donor = new Donor({ id: crypto.randomUUID(), name, email, blood });
 
   const query =`
-    INSERT INTO donors ("name", "email", "blood") 
-    VALUES ($1, $2, $3)`
+    INSERT INTO DONOR ("id", "name", "email", "blood") 
+    VALUES ($1, $2, $3, $4)`
   
-  const values = [donor.name, donor.email, donor.blood];
+  const values = [donor.id, donor.name, donor.email, donor.blood];
   
   db.query(query, values, function(err) {
-    if (err) return response.send('Erro no Banco de Dados');
+    if (err) {
+      return response.status(400).json({ error: 'Erro na criação do donor' });
+    }
+  });
 
-    return response.redirect('/');
-  })
+  return response.status(201).json(donor);
 
 });
 

@@ -5,37 +5,52 @@ services:
     image: nginx:1.13
     container_name: doe_web
     volumes:
-      - ./web:/usr/share/nginx/html/
+      - ./client/web:/usr/share/nginx/html/
     ports:
       - 80:80
-    # depends_on:
-    #   - server
+    restart: always
+    depends_on:
+      - server
 
-  # db:
-  #   image: postgres
-  #   container_name: doe_postgres
-  #   restart: always
-  #   tty: true
-  #   ports:
-  #     - '${POSTGRES_PORT}:5432'
-  #   environment:
-  #     POSTGRES_HOST: ${POSTGRES_HOST}
-  #     POSTGRES_PORT: ${POSTGRES_PORT}
-  #     POSTGRES_USERNAME: ${POSTGRES_USERNAME}
-  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  #     POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+  db:
+    image: postgres
+    container_name: doe_postgres
+    restart: always
+    tty: true
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    environment:
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
 
-  # pgadmin:
-  #   image: dpage/pgadmin4
-  #   container_name: doe_pgadmin4
-  #   tty: true
-  #   environment:
-  #     - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
-  #     - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
-  #   ports:
-  #     - "${PGADMIN_PORT}:80"
-  #   depends_on:
-  #     - db
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: doe_pgadmin4
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - db
 
-  # server:
-  #   - container_name: doe_server
+  server:
+    image: doe-server
+    container_name: doe_server
+    build: .
+    tty: true 
+    links:
+      - db
+    volumes:
+      - ./server:/doe-backend
+      - ./server/node_modules:/doe-backend/node_modules
+    ports:
+      - ${PORT}:3000
+    depends_on:
+      - db
+    command: bash -c "npm run dev"
+    

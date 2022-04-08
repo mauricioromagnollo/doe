@@ -6,8 +6,7 @@
   "author": "x0n4d0 [mauricioromagnolis@gmail.com]",
   "license": "MIT",
   "scripts": {
-    "dev": "APP_ENV=development nodemon ./server.js",
-    "up:docker": "APP_ENV=development docker-compose --env-file ../.env.dev up --build -d"
+    "dev": "APP_ENV=development nodemon ./src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,5 +16,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": "17"
   }
 }
