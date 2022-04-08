@@ -1,14 +1,17 @@
 {
-  "name": "server",
+  "name": "@doe/server",
   "version": "1.0.0",
   "main": "index.js",
   "keywords": [],
   "author": "x0n4d0 [mauricioromagnolis@gmail.com]",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "APP_ENV=development nodemon ./server.js",
+    "up:docker": "APP_ENV=development docker-compose --env-file ../.env.dev up --build -d"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
     "nunjucks": "^3.2.0",
     "pg": "^7.18.1"
