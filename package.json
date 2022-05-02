@@ -1,13 +1,27 @@
 {
-  "name": "doe",
+  "name": "doe-app",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:x0n4d0/doe.git",
-  "author": "x0n4d0 <romagnolimauricio@gmail.com>",
-  "license": "MIT",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~44.0.2",
+    "expo-splash-screen": "~0.14.1",
+    "expo-status-bar": "~1.2.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-web": "0.17.1"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-angular": "^9.1.1",
-    "husky": "^4.2.5"
-  }
+    "@babel/core": "^7.12.9",
+    "typescript": "~4.3.5",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12"
+  },
+  "private": true
 }
